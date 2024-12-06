@@ -1,4 +1,4 @@
-name: Django Backend CI/CD
+name: Django Backend CI
 
 on:
   push:
@@ -36,14 +36,3 @@ jobs:
       run: |
         cd backend
         python manage.py test
-    
-    - name: Deploy to Production
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      env:
-        SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-        SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-        SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
-      run: |
-        echo "Add your deployment commands here"
-        # Example for deploying to Heroku:
-        # git subtree push --prefix backend heroku main

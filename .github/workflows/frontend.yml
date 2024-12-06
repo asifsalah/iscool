@@ -1,4 +1,4 @@
-name: Next.js Frontend CI/CD
+name: Next.js Frontend CI
 
 on:
   push:
@@ -40,13 +40,3 @@ jobs:
       run: |
         cd frontend
         npm test || echo "No tests specified"
-        
-    - name: Deploy to Production
-      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      env:
-        NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
-        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
-      run: |
-        echo "Add your deployment commands here"
-        # Example for deploying to Vercel:
-        # vercel --prod --token ${{ secrets.VERCEL_TOKEN }}
